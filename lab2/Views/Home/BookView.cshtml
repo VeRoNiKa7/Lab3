@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model lab2.Models.Book
+
+<h2>Книга № @Model.BookId</h2>
+<div class="display-label"><b>Название книги</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Name)
+</div>
+<div class="display-label"><b>Жанр</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Genre)
+</div>
+<div class="display-label"><b>Описание</b></div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Description)
+</div>

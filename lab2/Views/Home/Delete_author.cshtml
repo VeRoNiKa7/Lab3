@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Удалить автора";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model lab2.Models.Author
+<h2>Удаление автора</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Автор <br />
+        @Html.DropDownListFor(model => model.Id, ViewBag.Authors as SelectList)
+    </p>
+
+    <input type="submit" value="Удалить " />
+}
+<div>
+    @Html.ActionLink("К списку книг", "Index")
+</div>

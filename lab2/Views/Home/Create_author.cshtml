@@ -1,0 +1,21 @@
+﻿
+@model lab2.Models.Author
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Новый автор</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.FIO, "ФИО")
+    <br />
+    @Html.EditorFor(model => model.FIO)
+    <br /><br />
+    
+    <input type="submit" value="Добавить" />
+}
+    <div>
+        @Html.ActionLink("К списку книг", "Index")
+    </div>

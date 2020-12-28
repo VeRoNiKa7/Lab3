@@ -1,0 +1,41 @@
+﻿
+@model lab2.Models.Book
+@{
+    ViewBag.Title = "Добавление книги";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление новой книги</h2>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Книга</legend>
+
+        <p>
+            Название книги <br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+
+        <p>
+            Автор <br />
+            @Html.DropDownListFor(model => model.AuthorId, ViewBag.Authors as SelectList)
+        </p>
+
+        <p>
+            Жанр  <br />
+            @Html.EditorFor(model => model.Genre)
+        </p>
+        <p>
+            Описание <br />
+            @Html.EditorFor(model => model.Description)
+        </p>
+
+        <p>
+            <input type="submit" value="Добавить книгу" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку книг", "Index")
+</div>

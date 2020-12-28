@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Удалить книгу";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model lab2.Models.Book
+<h2>Удаление книги</h2>
+<dl>
+    <dt>Название</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>Автор</dt>
+    <dd>
+        @ViewBag.Author
+    </dd>
+
+    <dt>Жанр</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Genre)
+    </dd>
+
+    <dt>Описание</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}
+
+

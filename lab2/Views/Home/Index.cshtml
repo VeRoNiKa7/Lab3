@@ -1,0 +1,59 @@
+﻿
+@model  lab2.Models.BooksListViewModel
+@{
+    ViewBag.Title = "MyBooks";
+}
+<div>
+    <h2>Домашняя библиотека</h2>
+    <p>
+        @Html.ActionLink("Добавить автора", "Create_author")
+    </p>
+    <p>
+        @Html.ActionLink("Добавить книгу", "Create")
+    </p>
+    <p>
+        @Html.ActionLink("Удалить автора", "Delete_author")
+    </p>
+
+    <form method="get">
+        <div class="form-inline">
+            <label class="control-label">Автор: </label>
+            @Html.DropDownList("author", Model.Authors as SelectList,
+                        htmlAttributes: new { @class = "form-control" })
+
+            <label class="control-label">Жанр: </label>
+            @Html.DropDownList("genre", Model.Genres as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+
+            <input type="submit" value="Фильтр" class="btn btn-default" />
+        </div>
+    </form>
+
+    <table>
+        <tr class="header">
+            <td><p>Название книги</p></td>
+            <td><p>Автор</p></td>
+            <td><p>Жанр</p></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.FIO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.ActionLink("Просмотр", "BookView", new { id = item.BookId }) |
+                    @Html.ActionLink("Редактировать", "EditBook", new { id = item.BookId }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.BookId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

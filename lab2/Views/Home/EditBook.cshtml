@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Редактировать книгу";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model lab2.Models.Book
+<h2>Книга № @Model.BookId</h2>
+@using (Html.BeginForm("EditBook", "Home", FormMethod.Post))
+{
+<fieldset>
+ 
+    @Html.HiddenFor(model => model.BookId)
+
+    <p>
+        Название книги <br />
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Автор <br />
+        @Html.DropDownListFor(model => model.AuthorId, ViewBag.Authors as SelectList)
+    </p>
+
+    <p>
+        Жанр  <br />
+        @Html.EditorFor(model => model.Genre)
+    </p>
+    <p>
+        Описание <br />
+        @Html.EditorFor(model => model.Description)
+    </p>
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+</fieldset>
+}
+<div>
+    @Html.ActionLink("Вернуться к списку книг", "Index")
+</div>
